@@ -20,7 +20,7 @@ class Programa:
         self._nome = nome
 
     def __str__(self):
-        return f'{self._nome} - {self.ano} - {self._likes} Likes'
+        return f'Nome: {self.nome} Likes: {self.likes}'
 
 
 class Filme(Programa):
@@ -29,37 +29,51 @@ class Filme(Programa):
         self.duracao = duracao
 
     def __str__(self):
-        return f'{self._nome} - {self.ano} - {self.duracao} min - {self._likes} Likes'
+        return f'Nome: {self.nome} - {self.duracao} min - Likes: {self.likes}'
 
 
 class Serie(Programa):
-    def __init__(self, nome, ano, temporadas, likes):
+    def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
     def __str__(self):
-        return f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes} Likes'
+        return f'Nome: {self.nome} - {self.temporadas} temporadas - Likes: {self.likes}'
+
+
+class Playlist():
+    def __init__(self, nome, programas):
+        self.nome = nome
+        self._programas = programas
+
+    @property
+    def listagem(self):
+        return self._programas
+
+    @property
+    def tamanho(self):
+        return len(self._programas)
 
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
-vingadores.dar_like()
-print(f'{vingadores.nome} - {vingadores.duracao}: {vingadores.likes}')
-
-
 atlanta = Serie('atlanta', 2018, 2)
-atlanta.dar_like()
-atlanta.dar_like()
-print(f'{atlanta.nome} - {atlanta.temporadas}: {atlanta.likes}')
+tmep = Filme('todo mundo em panico', 1999, 100)
+demolidor = Serie('demolidor', 2016, 2)
 
-listinha = [atlanta, vingadores]
+vingadores.dar_likes()
+vingadores.dar_likes()
+vingadores.dar_likes()
+atlanta.dar_likes()
+atlanta.dar_likes()
+tmep.dar_likes()
+tmep.dar_likes()
+demolidor.dar_likes()
+demolidor.dar_likes()
 
-for programa in listinha:
-    if hasattr(programa, 'duracao'):
-        detalhe = f'{programa.duracao} min'
-    else:
-        detalhe = f'{programa.temporadas} temporadas'
+listinha = [atlanta, vingadores, demolidor, tmep]
+minha_playlist = Playlist('fim de semana', listinha)
 
-    print(f'Nome: {programa.nome} - {detalhe} - Likes: {programa.likes}')
-
-for programa in listinha:
+for programa in minha_playlist.listagem:
     print(programa)
+
+print(f'Tamanho: {len(minha_playlist.listagem)}')

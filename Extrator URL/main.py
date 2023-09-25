@@ -10,11 +10,20 @@ print(url_parametros)
 
 # -------------------------------------------------------
 
-url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
+# url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
+url = ""
+
+# Sanitização da URL
+url = url.replace(" ", "")
+
+# Validação da URL
+if url == "":
+    raise ValueError("A URL está vazia")
 
 # Separa base e parâmetros
 indice_interrogacao = url.find('?')
 url_base = url[:indice_interrogacao]
+print(url_base)
 url_parametros = url[indice_interrogacao+1:]
 print(url_parametros)
 

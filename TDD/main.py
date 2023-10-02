@@ -1,10 +1,10 @@
-from TDD.codigo.bytebank import Funcionario
+from codigo.bytebank import Funcionario
 
 # lucas = Funcionario('Lucas Carvalho', '13/03/2000', 1000)
 
 # print(lucas.idade)
 
-
+"""
 def teste_idade():
     funcionario_teste = Funcionario("Teste", "13/03/2000", 1111)
     print(f"Teste = {funcionario_teste.idade()}")
@@ -17,3 +17,7 @@ def teste_idade():
 
 
 teste_idade()
+"""
+ana = Funcionario("Ana", "12/03/1997", 1000)
+
+print(ana.calcular_bonus())
